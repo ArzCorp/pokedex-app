@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, SafeAreaView } from 'react-native'
 
-export default function HomeScreen() {
+export default function FavoritesScreen() {
 	return (
 		<SafeAreaView>
 			<Text>Home Screen</Text>

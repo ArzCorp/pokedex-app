@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaView, Text } from 'react-native'
 
-export function PokedexScreen() {
+export default function PokedexScreen() {
 	return (
 		<SafeAreaView>
 			<Text>Pokedex</Text>

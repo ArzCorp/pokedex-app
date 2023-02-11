@@ -1,16 +1,17 @@
 import React from 'react'
 import { Text, SafeAreaView, StyleSheet } from 'react-native'
 
-export default function LoginScreen() {
+export default function AccountScreen() {
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text>Login Screen</Text>
-			<Text>Login Screen</Text>
-			<Text>Login Screen</Text>
-			<Text>Login Screen</Text>
-			<Text>Login Screen</Text>
-			<Text>Login Screen</Text>
-			<Text>Login Screen</Text>
+			<Text>Account Screen</Text>
+			<Text>Account Screen</Text>
+			<Text>Account Screen</Text>
+			<Text>Account Screen</Text>
+			<Text>Account Screen</Text>
+			<Text>Account Screen</Text>
+			<Text>Account Screen</Text>
+			<Text>Account Screen</Text>
 		</SafeAreaView>
 	)
 }
