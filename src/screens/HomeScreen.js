@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Text, SafeAreaView } from 'react-native'
 
 export default function HomeScreen() {
 	return (
-		<View>
+		<SafeAreaView>
 			<Text>Home Screen</Text>
 			<Text>Home Screen</Text>
 			<Text>Home Screen</Text>
@@ -12,6 +12,6 @@ export default function HomeScreen() {
 			<Text>Home Screen</Text>
 			<Text>Home Screen</Text>
 			<Text>Home Screen</Text>
-		</View>
+		</SafeAreaView>
 	)
 }

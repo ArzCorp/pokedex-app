@@ -1,12 +1,23 @@
 import React from 'react'
-import { Text, TextInput, Button, View } from 'react-native'
+import { Text, TextInput, Button, SafeAreaView, StyleSheet } from 'react-native'
 
 export default function LoginForm() {
 	return (
-		<View>
-			<Text>Login Form</Text>
+		<SafeAreaView style={styles.container}>
+			<Text style={styles.text}>Login Form</Text>
 			<TextInput placeholder="Email" />
 			<Button title="Enviar" onPress={() => console.log('Enviando...')} />
-		</View>
+		</SafeAreaView>
 	)
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: '#fwfwfw',
+		color: '#ffffff',
+	},
+	text: {
+		fontSize: 30,
+	},
+})
