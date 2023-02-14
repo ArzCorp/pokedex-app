@@ -11,3 +11,13 @@ export const getPokemonApi = async () => {
 		throw error
 	}
 }
+
+export const getPokemonDetailApi = async (apiUrl) => {
+	try {
+		const response = await fetch(apiUrl)
+		const result = await response.json()
+		return result
+	} catch (error) {
+		throw error
+	}
+}
