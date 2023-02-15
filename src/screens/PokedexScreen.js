@@ -24,7 +24,11 @@ export default function PokedexScreen() {
 	}, [])
 
 	return (
-		<SafeAreaView>
+		<SafeAreaView
+			style={{
+				paddingBottom: 30,
+			}}
+		>
 			<FlatList
 				data={pokemons}
 				keyExtractor={(pokemon) => String(pokemon.id)}
