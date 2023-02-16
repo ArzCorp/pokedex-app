@@ -1,27 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { FlatList, SafeAreaView, Text } from 'react-native'
+import React from 'react'
+import { ActivityIndicator, FlatList, SafeAreaView } from 'react-native'
 import Pokemon from '../components/Pokemon'
-
-import { getPokemonApi, getPokemonDetailApi } from '../utils/api/pokemonApi'
-import { mappedPokemonData } from '../utils/mappedPokemonData'
+import { usePokemon } from '../hooks/usePokemon'
 
 export default function PokedexScreen() {
-	const [pokemons, setPokemons] = useState([])
-
-	const fetchPokemon = async () => {
-		const { results } = await getPokemonApi()
-		const pokemonDetails = []
-
-		for await (const poke of results) {
-			const response = await getPokemonDetailApi(poke.url)
-			pokemonDetails.push(mappedPokemonData(response))
-		}
-		setPokemons(pokemonDetails)
-	}
-
-	useEffect(() => {
-		fetchPokemon()
-	}, [])
+	const { pokemon, getPokemon, hasNextPage } = usePokemon()
 
 	return (
 		<SafeAreaView
@@ -30,10 +13,12 @@ export default function PokedexScreen() {
 			}}
 		>
 			<FlatList
-				data={pokemons}
-				keyExtractor={(pokemon) => String(pokemon.id)}
+				data={pokemon}
+				keyExtractor={(pokemon) => String(pokemon.pokedex_order)}
+				onEndReached={getPokemon}
 				renderItem={({ item }) => <Pokemon {...item} />}
 				numColumns={2}
+				ListFooterComponent={hasNextPage && <ActivityIndicator size="large" />}
 				showsHorizontalScrollIndicator={false}
 			/>
 		</SafeAreaView>
