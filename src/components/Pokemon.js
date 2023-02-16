@@ -1,18 +1,22 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Image, Text, Pressable, StyleSheet } from 'react-native'
 import { getPokemonColor } from '../utils/getPokemonColor'
 
-export default function Pokemon({ name, pokedex_order, image, type }) {
+export default function Pokemon({ name, pokedex_order, image, type, id }) {
+	const navigate = useNavigation()
+
 	const cardContainerStyles = {
 		...styles.cardContainer,
 		backgroundColor: getPokemonColor(type),
 	}
 
+	const moveToPokemoDetails = () => {
+		navigate.navigate('Pokemon', { id })
+	}
+
 	return (
-		<Pressable
-			onPress={() => console.log(`Move to ${name}`)}
-			style={cardContainerStyles}
-		>
+		<Pressable onPress={moveToPokemoDetails} style={cardContainerStyles}>
 			<Text style={styles.pokemonName}>{name}</Text>
 			<Text style={styles.pokemonNumber}>#{pokedex_order}</Text>
 			<Image style={styles.pokemonImage} source={{ uri: image }} />
