@@ -1,7 +1,8 @@
 import React from 'react'
 import { Text } from 'react-native'
+import { usePokemonDetail } from '../hooks/usePokemonDetails'
 
-export default function PokemonDetailsScreen({ route }) {
-	console.log(route.params.id)
-	return <Text>Pokemon details screen</Text>
+export default function PokemonDetailsScreen({ route: { params } }) {
+	const { pokemonDetails } = usePokemonDetail(params.id)
+	return <Text>{pokemonDetails.name}</Text>
 }
