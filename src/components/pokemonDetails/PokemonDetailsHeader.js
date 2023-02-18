@@ -17,8 +17,8 @@ export default function PokemonDetailsHeader({
 		<View style={styles.pokemonContainer}>
 			<View style={bgStyles} />
 			<View style={styles.pokemonDataContainer}>
-				<Text>{pokemonName}</Text>
-				<Text>#{pokemonNumber}</Text>
+				<Text style={styles.pokemonName}>{pokemonName}</Text>
+				<Text style={styles.pokemonNumber}>#{pokemonNumber}</Text>
 			</View>
 			<View style={styles.pokemonImageContainer}>
 				<Image style={styles.pokemonImage} source={{ uri: pokemonImage }} />
@@ -29,7 +29,7 @@ export default function PokemonDetailsHeader({
 
 const styles = StyleSheet.create({
 	pokemonContainer: {
-		paddingTop: 20,
+		paddingTop: 55,
 	},
 	pokemonBg: {
 		position: 'absolute',
@@ -43,11 +43,27 @@ const styles = StyleSheet.create({
 		borderBottomLeftRadius: 300,
 		transform: [{ scaleX: 2 }],
 	},
-	pokemonDataContainer: {},
+	pokemonName: {
+		color: 'white',
+		fontWeight: 'bold',
+		fontSize: 25,
+	},
+	pokemonNumber: {
+		color: 'white',
+		fontSize: 19,
+	},
+	pokemonDataContainer: {
+		paddingTop: 12,
+		paddingHorizontal: 20,
+		flexDirection: 'row',
+		alignContent: 'center',
+		justifyContent: 'space-between',
+	},
 	pokemonImageContainer: {
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignContent: 'center',
+		resizeMode: 'contain',
 	},
 	pokemonImage: {
 		width: 200,

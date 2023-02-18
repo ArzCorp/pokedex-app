@@ -4,7 +4,14 @@ import PokemonDetailsHeader from './PokemonDetailsHeader'
 import PokemonDetailsStats from './PokemonDetailsStats'
 import PokemonDetailsType from './PokemonDetailsType'
 
-export default function PokemonDetails({ name, pokedex_order, image, type }) {
+export default function PokemonDetails({
+	name,
+	pokedex_order,
+	image,
+	type,
+	types,
+	stats,
+}) {
 	return (
 		<View>
 			<PokemonDetailsHeader
@@ -13,8 +20,8 @@ export default function PokemonDetails({ name, pokedex_order, image, type }) {
 				pokemonImage={image}
 				pokemonType={type}
 			/>
-			<PokemonDetailsType />
-			<PokemonDetailsStats />
+			<PokemonDetailsType pokemonTypes={types} />
+			<PokemonDetailsStats pokemonStats={stats} />
 		</View>
 	)
 }
