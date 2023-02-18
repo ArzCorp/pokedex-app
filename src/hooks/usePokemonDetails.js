@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 import { getPokemonDetailApi } from '../utils/api/pokemonApi'
 import { API_HOST } from '../utils/constants'
+import { mappedPokemonData } from '../utils/mappedPokemonData'
 
 export const usePokemonDetail = (pokemonId) => {
 	const [pokemonDetails, setPokemonDetails] = useState({})
@@ -12,7 +13,7 @@ export const usePokemonDetail = (pokemonId) => {
 			const result = await getPokemonDetailApi(
 				`${API_HOST}/pokemon/${pokemonId}`
 			)
-			setPokemonDetails(result)
+			setPokemonDetails(mappedPokemonData(result))
 		} catch (error) {
 			navigator.goBack()
 		}

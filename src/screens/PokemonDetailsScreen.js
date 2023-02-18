@@ -1,8 +1,13 @@
 import React from 'react'
-import { Text } from 'react-native'
+import { SafeAreaView } from 'react-native'
+import PokemonDetails from '../components/pokemonDetails'
 import { usePokemonDetail } from '../hooks/usePokemonDetails'
 
 export default function PokemonDetailsScreen({ route: { params } }) {
 	const { pokemonDetails } = usePokemonDetail(params.id)
-	return <Text>{pokemonDetails.name}</Text>
+	return (
+		<SafeAreaView>
+			<PokemonDetails {...pokemonDetails} />
+		</SafeAreaView>
+	)
 }

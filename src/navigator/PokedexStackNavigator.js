@@ -10,7 +10,14 @@ export default function PokedexStackNavigator() {
 	return (
 		<Navigator initialRouteName="home">
 			<Screen name="Pokedex" component={PokedexScreen} />
-			<Screen name="Pokemon" component={PokemonDetailsScreen} />
+			<Screen
+				name="Pokemon"
+				component={PokemonDetailsScreen}
+				options={{
+					title: '',
+					headerTransparent: true,
+				}}
+			/>
 		</Navigator>
 	)
 }
