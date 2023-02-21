@@ -1,18 +1,13 @@
 import React from 'react'
-import { Text, SafeAreaView, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
+import LoginForm from '../components/LoginForm'
 
 export default function AccountScreen() {
+	const isAuth = null
 	return (
-		<SafeAreaView style={styles.container}>
-			<Text>Account Screen</Text>
-			<Text>Account Screen</Text>
-			<Text>Account Screen</Text>
-			<Text>Account Screen</Text>
-			<Text>Account Screen</Text>
-			<Text>Account Screen</Text>
-			<Text>Account Screen</Text>
-			<Text>Account Screen</Text>
-		</SafeAreaView>
+		<View style={styles.container}>
+			{isAuth ? <Text></Text> : <LoginForm />}
+		</View>
 	)
 }
 

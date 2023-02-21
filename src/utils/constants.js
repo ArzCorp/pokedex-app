@@ -22,3 +22,16 @@ export const POKEMON_TYPE_COLORS = {
 }
 
 export const EMPTY_STRING = ''
+
+export const DUMMY_USER = {
+	username: 'jose.perez',
+	password: 'Jose0807',
+}
+
+export const DUMMY_USER_DATA = {
+	username: DUMMY_USER.username,
+	password: DUMMY_USER.password,
+	name: 'Jose',
+	lastname: 'Perez Leon',
+	email: 'jose.perez@dummy.com',
+}
