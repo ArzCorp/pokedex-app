@@ -42,3 +42,8 @@ export const AUTH_CONTEXT_INITIAL_VALUES = {
 	logIn: () => {},
 	logOut: () => {},
 }
+
+export const LOGIN_FORM_INITIAL_VALUES = {
+	username: '',
+	password: '',
+}
