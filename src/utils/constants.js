@@ -35,3 +35,10 @@ export const DUMMY_USER_DATA = {
 	lastname: 'Perez Leon',
 	email: 'jose.perez@dummy.com',
 }
+
+export const AUTH_CONTEXT_INITIAL_VALUES = {
+	isAuth: false,
+	user: {},
+	logIn: () => {},
+	logOut: () => {},
+}

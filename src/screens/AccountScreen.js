@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import LoginForm from '../components/LoginForm'
+import { AuthContext } from '../context/AuthContext'
 
 export default function AccountScreen() {
-	const isAuth = null
+	const { isAuth } = useContext(AuthContext)
+
 	return (
 		<View style={styles.container}>
-			{isAuth ? <Text></Text> : <LoginForm />}
+			{isAuth ? <Text>USER DATA</Text> : <LoginForm />}
 		</View>
 	)
 }

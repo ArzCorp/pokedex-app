@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
 	Text,
 	TextInput,
@@ -7,8 +7,12 @@ import {
 	Pressable,
 	View,
 } from 'react-native'
+import { AuthContext } from '../context/AuthContext'
+import { DUMMY_USER } from '../utils/constants'
 
 export default function LoginForm() {
+	const { logIn, user } = useContext(AuthContext)
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.formContainer}>
@@ -19,7 +23,7 @@ export default function LoginForm() {
 					style={styles.input}
 					secureTextEntry
 				/>
-				<Pressable style={styles.button} onPress={() => {}}>
+				<Pressable style={styles.button} onPress={() => logIn(DUMMY_USER)}>
 					<Text style={styles.buttonText}>Iniciar sesión</Text>
 				</Pressable>
 			</View>
