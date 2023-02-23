@@ -1,5 +1,5 @@
 import { useFormik } from 'formik'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {
 	Text,
 	TextInput,
@@ -9,14 +9,20 @@ import {
 	View,
 } from 'react-native'
 import { AuthContext } from '../context/AuthContext'
-import { DUMMY_USER, LOGIN_FORM_INITIAL_VALUES } from '../utils/constants'
+import {
+	DUMMY_USER,
+	DUMMY_USER_DATA,
+	LOGIN_FORM_INITIAL_VALUES,
+	EMPTY_STRING,
+} from '../utils/constants'
 import * as yup from 'yup'
 
 export default function LoginForm() {
+	const [logInError, setLogInError] = useState(EMPTY_STRING)
 	const { logIn } = useContext(AuthContext)
-	const { handleChange, handleSubmit, values, errors } = useFormik({
+	const { handleChange, handleSubmit, resetForm, values, errors } = useFormik({
 		initialValues: LOGIN_FORM_INITIAL_VALUES,
-		onSubmit: handleFormData,
+		onSubmit: (values) => handleFormData(values),
 		validationSchema: yup.object().shape({
 			username: yup.string().required(),
 			password: yup.string().required(),
@@ -25,15 +31,16 @@ export default function LoginForm() {
 
 	const handleFormData = ({ username, password }) => {
 		if (username === DUMMY_USER.username && password === DUMMY_USER.password) {
-			console.log('login')
+			logIn(DUMMY_USER_DATA)
+			setLogInError(EMPTY_STRING)
 		} else {
-			console.log('Not login')
+			setLogInError('Usuario o contraseña erronea')
 		}
 	}
 
 	const renderErrors = () => {
 		for (const error in errors) {
-			return <Text>{errors[error]}</Text>
+			return <Text style={styles.errorMessage}>{errors[error]}</Text>
 		}
 	}
 
@@ -58,7 +65,10 @@ export default function LoginForm() {
 					<Text style={styles.buttonText}>Iniciar sesión</Text>
 				</Pressable>
 			</View>
-			<View>{renderErrors()}</View>
+			<View>
+				{renderErrors()}
+				<Text style={styles.errorMessage}>{logInError}</Text>
+			</View>
 		</SafeAreaView>
 	)
 }
@@ -89,11 +99,17 @@ const styles = StyleSheet.create({
 	button: {
 		padding: 10,
 		borderRadius: 15,
-		backgroundColor: '#E400F',
+		backgroundColor: 'red',
 	},
 	buttonText: {
 		color: 'white',
 		textAlign: 'center',
 		fontWeight: 'bold',
+	},
+	errorMessage: {
+		color: 'red',
+		fontWeight: 'bold',
+		fontSize: 14,
+		marginTop: 20,
 	},
 })
