@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import LoginForm from '../components/LoginForm'
+import UserData from '../components/UserData'
 import { AuthContext } from '../context/AuthContext'
 
 export default function AccountScreen() {
@@ -8,7 +9,7 @@ export default function AccountScreen() {
 
 	return (
 		<View style={styles.container}>
-			{isAuth ? <Text>USER DATA</Text> : <LoginForm />}
+			{isAuth ? <UserData /> : <LoginForm />}
 		</View>
 	)
 }
