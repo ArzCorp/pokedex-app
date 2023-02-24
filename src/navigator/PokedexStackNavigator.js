@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import PokedexScreen from '../screens/PokedexScreen'
 import PokemonDetailsScreen from '../screens/PokemonDetailsScreen'
+import AddFavoriteIcon from '../components/AddFavoriteIcon'
 
 const { Navigator, Screen } = createStackNavigator()
 
