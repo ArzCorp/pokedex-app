@@ -1,2 +1,2 @@
-# react-native
-This project is for practce React Native 
+# Pokedex App
+This project is build with practce React Native about pokemon
