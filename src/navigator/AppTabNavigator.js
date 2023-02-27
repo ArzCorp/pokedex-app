@@ -11,7 +11,7 @@ import FavoritesStackNavigator from './FavoritesStackNavigator'
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
-export default function NavigatorTab() {
+export default function AppTabNavigator() {
 	return (
 		<Navigator>
 			<Screen

@@ -4,10 +4,12 @@ import { EMPTY_STRING } from '../utils/constants'
 import { mappedPokemonData } from '../utils/mappedPokemonData'
 
 export function usePokemon() {
+	const [loading, setLoading] = useState(false)
 	const [pokemon, setPokemon] = useState([])
 	const [nextpage, setNextPage] = useState(EMPTY_STRING)
 
 	const getPokemon = async () => {
+		setLoading(true)
 		const { results, next } = await getPokemonApi(nextpage)
 		setNextPage(next)
 		const pokemonDetails = []
@@ -18,11 +20,17 @@ export function usePokemon() {
 		}
 
 		setPokemon([...pokemon, ...pokemonDetails])
+		setLoading(false)
 	}
 
 	useEffect(() => {
 		getPokemon()
 	}, [])
 
-	return { pokemon, getPokemon, hasNextPage: Boolean(nextpage) }
+	return {
+		pokemon,
+		getPokemon,
+		hasNextPage: Boolean(nextpage),
+		isLoading: loading,
+	}
 }
