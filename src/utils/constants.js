@@ -47,3 +47,5 @@ export const LOGIN_FORM_INITIAL_VALUES = {
 	username: '',
 	password: '',
 }
+
+export const FAVORITES_POKEMON_STORAGE = 'favorites'

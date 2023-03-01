@@ -1,18 +1,26 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeartBroken, faHeart } from '@fortawesome/free-solid-svg-icons'
 import { Pressable } from 'react-native'
+import { useFavorites } from '../hooks/useFavorites'
 
 export default function AddFavoriteIcon({ pokemonId }) {
-	const addFavorite = () => console.log(pokemonId)
+	const { addFavoritePokemon, isFavorite, removeFavoritePokemon } =
+		useFavorites(pokemonId)
+	const icon = isFavorite ? faHeartBroken : faHeart
+
+	const toggleFavoritePokemon = isFavorite
+		? removeFavoritePokemon
+		: addFavoritePokemon
+
 	return (
-		<Pressable onPress={addFavorite}>
+		<Pressable onPress={toggleFavoritePokemon}>
 			<FontAwesomeIcon
 				style={{
 					marginRight: 20,
 					color: 'red',
 				}}
-				icon={faHeart}
+				icon={icon}
 				size={20}
 			/>
 		</Pressable>
