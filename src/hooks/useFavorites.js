@@ -5,19 +5,20 @@ import {
 	isFavoritePokemonApi,
 	removeFavoritePokemonApi,
 } from '../utils/api/FavoritesApi'
+import { usePokemonDetail } from './usePokemonDetails'
 
 export const useFavorites = (id) => {
 	const [favorites, setFavorites] = useState([])
 	const [isFavorite, setIsFavorite] = useState(false)
+	const { getPokemonDetails } = usePokemonDetail()
 
 	const getFavoritesPokemon = async () => {
 		const pokemon = await getFavoritesPokemonApi()
-		console.log({ pokemon })
 		setFavorites(pokemon)
 	}
 
 	const addFavoritePokemon = async () => {
-		await addFavoritePokemonApi(id)
+		await addFavoritePokemonApi(await getPokemonDetails(id))
 		setIsFavorite(await isFavoritePokemonApi(id))
 	}
 
@@ -36,5 +37,11 @@ export const useFavorites = (id) => {
 		isFavoritePokemon(id)
 	}, [id])
 
-	return { favorites, addFavoritePokemon, isFavorite, removeFavoritePokemon }
+	return {
+		favorites,
+		addFavoritePokemon,
+		isFavorite,
+		removeFavoritePokemon,
+		getFavoritesPokemon,
+	}
 }

@@ -10,21 +10,24 @@ export const usePokemonDetail = (pokemonId) => {
 	const navigator = useNavigation()
 
 	const getPokemonDetails = async (id) => {
+		const URL_ID = pokemonId || id
 		setLoading(true)
 		try {
-			const result = await getPokemonDetailApi(
-				`${API_HOST}/pokemon/${pokemonId}`
-			)
-			setPokemonDetails(mappedPokemonData(result))
+			const result = await getPokemonDetailApi(`${API_HOST}/pokemon/${URL_ID}`)
+			const pokemonData = mappedPokemonData(result)
+			setPokemonDetails(pokemonData)
+			setLoading(false)
+			return pokemonData
 		} catch (error) {
 			navigator.goBack()
 		}
-		setLoading(false)
 	}
 
 	useEffect(() => {
-		getPokemonDetails()
+		if (pokemonId) {
+			getPokemonDetails()
+		}
 	}, [])
 
-	return { pokemonDetails, isLoading: loading }
+	return { pokemonDetails, isLoading: loading, getPokemonDetails }
 }

@@ -26,7 +26,7 @@ export const addFavoritePokemonApi = async (id) => {
 export const isFavoritePokemonApi = async (id) => {
 	try {
 		const pokemon = await getFavoritesPokemonApi()
-		return pokemon.some((poke) => poke === id)
+		return pokemon.some((poke) => poke.id === id)
 	} catch (error) {
 		throw error
 	}
@@ -35,11 +35,19 @@ export const isFavoritePokemonApi = async (id) => {
 export const removeFavoritePokemonApi = async (id) => {
 	try {
 		const pokemon = await getFavoritesPokemonApi()
-		const newPokemon = pokemon.filter((poke) => poke != id)
+		const newPokemon = pokemon.filter((poke) => poke.id != id)
 		await AsyncStorage.setItem(
 			FAVORITES_POKEMON_STORAGE,
 			JSON.stringify(newPokemon)
 		)
+	} catch (error) {
+		throw error
+	}
+}
+
+export const resetFavorites = async () => {
+	try {
+		await AsyncStorage.setItem(FAVORITES_POKEMON_STORAGE, JSON.stringify([]))
 	} catch (error) {
 		throw error
 	}

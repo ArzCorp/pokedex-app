@@ -2,6 +2,7 @@ import React from 'react'
 import { ActivityIndicator, FlatList, SafeAreaView } from 'react-native'
 import Loader from '../components/Loader'
 import Pokemon from '../components/Pokemon'
+import PokemonList from '../components/PokemonList'
 import { usePokemon } from '../hooks/usePokemon'
 
 export default function PokedexScreen() {
@@ -14,19 +15,13 @@ export default function PokedexScreen() {
 				height: '100%',
 			}}
 		>
-			{isLoading ? (
+			{isLoading && !hasNextPage ? (
 				<Loader />
 			) : (
-				<FlatList
-					data={pokemon}
-					keyExtractor={(pokemon) => String(pokemon.pokedex_order)}
-					onEndReached={getPokemon}
-					renderItem={({ item }) => <Pokemon {...item} />}
-					numColumns={2}
-					ListFooterComponent={
-						hasNextPage && <ActivityIndicator size="large" />
-					}
-					showsHorizontalScrollIndicator={false}
+				<PokemonList
+					pokemon={pokemon}
+					getPokemon={getPokemon}
+					hasNextPage={hasNextPage}
 				/>
 			)}
 		</SafeAreaView>
