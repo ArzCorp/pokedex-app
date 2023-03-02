@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { SafeAreaView } from 'react-native'
 import AddFavoriteIcon from '../components/AddFavoriteIcon'
 import Loader from '../components/Loader'
 import PokemonDetails from '../components/pokemonDetails'
+import { AuthContext } from '../context/AuthContext'
 import { usePokemonDetail } from '../hooks/usePokemonDetails'
 
 export default function PokemonDetailsScreen({
@@ -10,10 +11,12 @@ export default function PokemonDetailsScreen({
 	route: { params },
 }) {
 	const { pokemonDetails, isLoading } = usePokemonDetail(params.id)
+	const { isAuth } = useContext(AuthContext)
 
 	useEffect(() => {
 		navigation.setOptions({
-			headerRight: () => <AddFavoriteIcon pokemonId={pokemonDetails.id} />,
+			headerRight: () =>
+				isAuth ? <AddFavoriteIcon pokemonId={pokemonDetails.id} /> : null,
 		})
 	}, [pokemonDetails])
 
