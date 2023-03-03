@@ -21,6 +21,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "arzcorp.pokedex",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -28,6 +29,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b19b00b7-f34d-4afb-aa21-7f0215a6ac0a"
+      }
     }
   }
 }
